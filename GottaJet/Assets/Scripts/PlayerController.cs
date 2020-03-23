@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerLeftBoundary() {
-        var leftBoundary = -22;
+        var leftBoundary = -23;
         var playerHasReachLeftBoundary = transform.position.z < leftBoundary;
 
         if (playerHasReachLeftBoundary) {
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerRightBoundary() {
-        var rightBoundary = 22;
+        var rightBoundary = 23;
         var playerHasReachedRightBoundary = transform.position.z > rightBoundary;
 
         if (playerHasReachedRightBoundary) {
