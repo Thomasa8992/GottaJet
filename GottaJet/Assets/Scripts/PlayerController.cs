@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float MovementSpeed = 10;
+    public GameObject projectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +16,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update() {
         handlePlayerMovement();
-
         handlePlayerBoundaries();
+        shootProjectile();
+    }
+
+    private void shootProjectile() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Instantiate(projectile, transform.position, projectile.transform.rotation);
+        }
     }
 
     private void handlePlayerBoundaries() {
@@ -26,7 +34,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerLeftBoundary() {
-        var leftBoundary = -23;
+        var leftBoundary = -22;
         var playerHasReachLeftBoundary = transform.position.z < leftBoundary;
 
         if (playerHasReachLeftBoundary) {
@@ -35,7 +43,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerRightBoundary() {
-        var rightBoundary = 23;
+        var rightBoundary = 22;
         var playerHasReachedRightBoundary = transform.position.z > rightBoundary;
 
         if (playerHasReachedRightBoundary) {
