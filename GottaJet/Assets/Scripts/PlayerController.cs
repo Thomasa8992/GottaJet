@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Physics.IgnoreCollision(projectile.GetComponent<BoxCollider>(), GetComponent<BoxCollider>());
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void shootProjectile() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Instantiate(projectile, transform.position, projectile.transform.rotation);
+            Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
         }
     }
 
