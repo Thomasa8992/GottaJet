@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 20
+  playerProjectile: {fileID: 3529489934603533169, guid: 14fdff12878a18f4db7ac6401c8699e7,
+    type: 3}
 --- !u!1001 &6274073409282216209
 PrefabInstance:
   m_ObjectHideFlags: 0

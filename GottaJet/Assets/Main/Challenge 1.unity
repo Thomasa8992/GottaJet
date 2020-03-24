@@ -212,7 +212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3619440164190902212, guid: c47267b405b631b4693b99a447eb1ea3,
     type: 3}
-  counter: 1
 --- !u!4 &321343320
 Transform:
   m_ObjectHideFlags: 0
@@ -536,12 +535,12 @@ PrefabInstance:
     - target: {fileID: 9036476129431250094, guid: 1d0f0ea99488f0c4da7a25822f967ec4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 9036476129431250094, guid: 1d0f0ea99488f0c4da7a25822f967ec4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.28
+      value: -23.44
       objectReference: {fileID: 0}
     - target: {fileID: 9036476129431250094, guid: 1d0f0ea99488f0c4da7a25822f967ec4,
         type: 3}

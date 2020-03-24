@@ -5,17 +5,18 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject projectile;
+    public float movementSpeed = 1;
     // Start is called before the first frame update
     void Start()
     {
         Physics.IgnoreCollision(projectile.GetComponent<BoxCollider>(), GetComponent<BoxCollider>());
-        InvokeRepeating("ShootProjectile", 2, 1.5f);
+        InvokeRepeating("ShootProjectile", 1.5f, .5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
     }
 
     void ShootProjectile() {
