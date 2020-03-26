@@ -103,9 +103,9 @@ GameObject:
   - component: {fileID: 3529489934603533175}
   - component: {fileID: 3529489934603533174}
   - component: {fileID: 114302023808454922}
-  - component: {fileID: 3465426097446173939}
   - component: {fileID: 5364723582364406064}
-  - component: {fileID: 54479089408869508}
+  - component: {fileID: 114666408001582002}
+  - component: {fileID: 54491243116535218}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -141,8 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 20
-  enemyProjectile: {fileID: 7488000615698770528, guid: 50b6cffbdb320f14fa5184868e0eeb9b,
-    type: 3}
+  enemy: {fileID: 3619440164190902212, guid: c47267b405b631b4693b99a447eb1ea3, type: 3}
 --- !u!114 &114302023808454922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,18 +152,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aaaf658ecf33c946841bfbe54552705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3465426097446173939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3529489934603533169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a15bdc24c570d47b5cbe56d5542e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &5364723582364406064
@@ -180,7 +167,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.27489734, y: 0.26548302, z: 0.510746}
   m_Center: {x: -0.29089934, y: -0.04303749, z: 0.016328812}
---- !u!54 &54479089408869508
+--- !u!114 &114666408001582002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529489934603533169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a15bdc24c570d47b5cbe56d5542e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &54491243116535218
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -5,17 +5,24 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public float movementSpeed;
-    public GameObject enemyProjectile;
+    public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        Physics.IgnoreCollision(enemyProjectile.GetComponent<BoxCollider>(), GetComponent<BoxCollider>());
+
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.name == "EnemyAirplane") {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }

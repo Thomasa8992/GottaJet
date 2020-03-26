@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public float MovementSpeed = 10;
     public GameObject projectile;
+    public float fireRate = 0.5F;
+    private float nextFire = 0.0F;
 
     // Start is called before the first frame update
     void Start()
     {
-        Physics.IgnoreCollision(projectile.GetComponent<BoxCollider>(), GetComponent<BoxCollider>());
+
     }
 
     // Update is called once per frame
@@ -20,8 +22,16 @@ public class PlayerController : MonoBehaviour
         shootProjectile();
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.name == "EnemyAirplane") {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+    }
+
     private void shootProjectile() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire) {
+            nextFire = Time.time + fireRate;
             Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
         }
     }
