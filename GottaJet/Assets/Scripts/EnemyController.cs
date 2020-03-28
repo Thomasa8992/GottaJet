@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(collision.collider.gameObject.tag == "Player" || collision.collider.gameObject.tag == "PlayerBullet") {
+        if((collision.collider.gameObject.tag == "Player" || collision.collider.gameObject.tag == "PlayerBullet") && collision.collider.gameObject.tag != "EnemyBullet") {
             Destroy(collision.collider.gameObject);
             Destroy(gameObject);
         }

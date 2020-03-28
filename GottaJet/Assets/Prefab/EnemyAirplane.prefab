@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3619440164190902203}
   - component: {fileID: 3619440164190902202}
   - component: {fileID: 114811414152932798}
-  - component: {fileID: 65500965592378412}
   - component: {fileID: 54873185521934692}
   m_Layer: 0
   m_Name: EnemyAirplane
@@ -76,7 +75,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f9063a172dec5824f87a148932421f2d, type: 2}
+  - {fileID: 2100000, guid: af9d3101091f90d4db78a2097d5dcb84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,19 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 7488000615698770528, guid: 50b6cffbdb320f14fa5184868e0eeb9b,
     type: 3}
---- !u!65 &65500965592378412
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619440164190902212}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 19.097528, y: 4.7187066, z: 12.879532}
-  m_Center: {x: 0, y: 2.3593533, z: -3.0109177}
 --- !u!54 &54873185521934692
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -197,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f9063a172dec5824f87a148932421f2d, type: 2}
+  - {fileID: 2100000, guid: af9d3101091f90d4db78a2097d5dcb84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
