@@ -5,14 +5,14 @@ using UnityEngine;
 public class ItemSpawnManager : MonoBehaviour
 {
     public GameObject[] items;
-    public float spawnRangeZ = 25;
-    public float spawnPositionY = 8;
+    private float spawnRangeZ = 25;
+    private float spawnPositionY = 8;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomItem", 1, 1);
+        InvokeRepeating("SpawnRandomItem", 10, 10);
     }
 
     // Update is called once per frame
