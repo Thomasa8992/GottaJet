@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectile;
     public float fireRate = 0.5F;
     private float nextFire = 0.0F;
+    public GameObject fuel;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +23,15 @@ public class PlayerController : MonoBehaviour
         shootProjectile();
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "EnemyAirplane") {
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.collider.gameObject.tag != "Fuel") {
+            Destroy(collision.collider.gameObject);
             Destroy(gameObject);
-            Destroy(other.gameObject);
+        } else {
+            Destroy(collision.collider.gameObject);
         }
+
+
     }
 
     private void shootProjectile() {

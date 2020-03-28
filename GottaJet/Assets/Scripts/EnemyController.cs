@@ -22,4 +22,11 @@ public class EnemyController : MonoBehaviour
     void ShootProjectile() {
         Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.collider.gameObject.tag == "Player" || collision.collider.gameObject.tag == "PlayerBullet") {
+            Destroy(collision.collider.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
