@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FuelController : MonoBehaviour
 {
-    public float movementSpeed = 5;
+    private float movementSpeed = 3.5f;
     // Start is called before the first frame update
     void Start()
     {
