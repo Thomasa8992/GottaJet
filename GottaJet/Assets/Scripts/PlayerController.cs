@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void shootProjectile() {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire) {
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire) {
             nextFire = Time.time + fireRate;
             Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
         }
