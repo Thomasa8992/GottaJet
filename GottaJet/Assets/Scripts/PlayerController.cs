@@ -26,9 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.collider.gameObject.tag != "Fuel") {
-            Destroy(collision.collider.gameObject);
-            Destroy(gameObject);
-            SceneManager.LoadScene("Challenge 1");
+            handleFuelCollision(collision);
         } else {
             Destroy(collision.collider.gameObject);
         }
@@ -36,10 +34,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void handleFuelCollision(Collision collision) {
+        Destroy(collision.collider.gameObject);
+        Destroy(gameObject);
+        SceneManager.LoadScene("Challenge 1");
+    }
+
     private void shootProjectile() {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire) {
+        var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire;
+
+        if (keyCodeIsPressedAndNextFireIsReady) {
             nextFire = Time.time + fireRate;
-            Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
+
+            var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2));
+
+            Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
         }
     }
 
@@ -82,6 +91,7 @@ public class PlayerController : MonoBehaviour
         var playerHasReachedBottomBoundary = transform.position.y < BottomBoundary;
 
         if (playerHasReachedBottomBoundary) {
+
             transform.position = new Vector3(transform.position.x, BottomBoundary, transform.position.z);
         }
     }
@@ -93,13 +103,15 @@ public class PlayerController : MonoBehaviour
 
     private void handleHorizontalMovementByPlayerInput() {
         var horizontalInput = Input.GetAxis("Horizontal");
+        var horizontalMovement = Vector3.forward * Time.deltaTime * MovementSpeed * horizontalInput;
 
-        transform.Translate(Vector3.forward * Time.deltaTime * MovementSpeed * horizontalInput);
+        transform.Translate(horizontalMovement);
     }
 
     private void handleVerticalMovementByPlayerInput() {
         var verticalInput = Input.GetAxis("Vertical");
+        var verticalMovement = Vector3.up * Time.deltaTime * MovementSpeed * verticalInput;
 
-        transform.Translate(Vector3.up * Time.deltaTime * MovementSpeed * verticalInput);
+        transform.Translate(verticalMovement);
     }
 }
