@@ -25,16 +25,27 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(collision.collider.gameObject.tag != "Fuel") {
-            handleFuelCollision(collision);
+        if(!collision.gameObject.CompareTag("Fuel")) {
+            handlePlayerCollision(collision);
         } else {
-            Destroy(collision.collider.gameObject);
+            handleFuelCollision(collision);
         }
     }
 
-    private void handleFuelCollision(Collision collision) {
-        Destroy(collision.collider.gameObject);
+    private static void handleFuelCollision(Collision collision) {
+        Debug.Log("Award player fuel and points");
+        Destroy(collision.gameObject);
+    }
+
+    private void handlePlayerCollision(Collision collision) {
+        handleGameOverSequence(collision);
+        Destroy(collision.gameObject);
         Destroy(gameObject);
+    }
+
+    private void handleGameOverSequence(Collision collision) {
+        Debug.Log("Game Over");
+
         SceneManager.LoadScene("Challenge 1");
     }
 
