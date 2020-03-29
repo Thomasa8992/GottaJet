@@ -27,15 +27,16 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        var gameObjectTagIsPlayerBullet = collision.gameObject.CompareTag("PlayerBullet");
 
-        handlePlayerBulletCollision(collision, gameObjectTagIsPlayerBullet);
+        handlePlayerBulletCollision(collision);
     }
 
-    private void handlePlayerBulletCollision(Collision collision, bool gameObjectTagIsPlayerBullet) {
+    private void handlePlayerBulletCollision(Collision collision) {
+        var gameObjectTagIsPlayerBullet = collision.gameObject.CompareTag("PlayerBullet");
+
         var gameObjectTsEnemyBullet = collision.gameObject.CompareTag("EnemyBullet");
 
-        if ((gameObjectTagIsPlayerBullet && gameObjectTagIsPlayerBullet)) {
+        if (gameObjectTagIsPlayerBullet && !gameObjectTsEnemyBullet) {
             if (gameObjectTagIsPlayerBullet) {
                 Debug.Log("Award player points");
             }
