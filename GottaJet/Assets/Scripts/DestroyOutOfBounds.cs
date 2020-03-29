@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
@@ -11,18 +9,32 @@ public class DestroyOutOfBounds : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(transform.position.z > 35) {
+    void Update() {
+        DestroyOutOfBoundsObjectOnRightBoundary();
+        DestroyGameObjectsOnLeftBoundary();
+        DestroyOutOfBoundsOnLowerScreenBoundary();
+    }
+
+    private void DestroyOutOfBoundsOnLowerScreenBoundary() {
+        var outOfBoundsYPosition = -10;
+
+        if (transform.position.y < outOfBoundsYPosition) {
             Destroy(gameObject);
         }
+    }
 
-        if (transform.position.z < -35) {
+    private void DestroyOutOfBoundsObjectOnRightBoundary() {
+        var rightOutOfBoundsZPosition = 35;
+         
+        if (transform.position.z > rightOutOfBoundsZPosition) {
             Destroy(gameObject);
         }
+    }
 
-        if (transform.position.y < -10) {
-            Debug.Log("Reached destroy position");
+    private void DestroyGameObjectsOnLeftBoundary() {
+        var leftOutOfBoundsZPosition = -35;
+
+        if (transform.position.z < leftOutOfBoundsZPosition) {
             Destroy(gameObject);
         }
     }
