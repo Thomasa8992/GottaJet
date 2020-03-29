@@ -27,10 +27,10 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        var gamerTagisPlayerOrPlayerBullet = (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("PlayerBullet"));
+        var gameTagisPlayerOrPlayerBullet = (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("PlayerBullet"));
         var gameTagIsEnemyBullet = collision.gameObject.CompareTag("EnemyBullet");
 
-        if (gamerTagisPlayerOrPlayerBullet && !gameTagIsEnemyBullet) {
+        if (gameTagisPlayerOrPlayerBullet && !gameTagIsEnemyBullet) {
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
