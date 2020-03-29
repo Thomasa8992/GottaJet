@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
         } else {
             Destroy(collision.collider.gameObject);
         }
-
-
     }
 
     private void handleFuelCollision(Collision collision) {

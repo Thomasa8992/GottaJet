@@ -14,8 +14,11 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        handleEnemyMovement();
+    }
+
+    private void handleEnemyMovement() {
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
     }
 
@@ -24,8 +27,11 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if((collision.collider.gameObject.tag == "Player" || collision.collider.gameObject.tag == "PlayerBullet") && collision.collider.gameObject.tag != "EnemyBullet") {
-            Destroy(collision.collider.gameObject);
+        var gamerTagisPlayerOrPlayerBullet = (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("PlayerBullet"));
+        var gameTagIsEnemyBullet = collision.gameObject.CompareTag("EnemyBullet");
+
+        if (gamerTagisPlayerOrPlayerBullet && !gameTagIsEnemyBullet) {
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
