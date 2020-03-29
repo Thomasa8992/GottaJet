@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public float movementSpeed;
-    public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -14,15 +13,11 @@ public class ProjectileScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+    void Update() {
+        handleProjectileMovement();
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.name == "EnemyAirplane") {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+    private void handleProjectileMovement() {
+        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
     }
 }
