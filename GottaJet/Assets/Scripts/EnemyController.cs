@@ -15,10 +15,10 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        handleEnemyMovement();
+        HandleEnemyMovement();
     }
 
-    private void handleEnemyMovement() {
+    private void HandleEnemyMovement() {
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
     }
 
@@ -27,12 +27,12 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-
-        handlePlayerBulletCollision(collision);
+        HandlePlayerBulletCollision(collision);
     }
 
-    private void handlePlayerBulletCollision(Collision collision) {
+    private void HandlePlayerBulletCollision(Collision collision) {
         var gameObjectTagIsPlayerBullet = collision.gameObject.CompareTag("PlayerBullet");
+
         if (gameObjectTagIsPlayerBullet) {
             Debug.Log("Award player points");
 
