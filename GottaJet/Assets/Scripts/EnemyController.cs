@@ -7,9 +7,12 @@ public class EnemyController : MonoBehaviour
     public GameObject projectile;
     private float movementSpeed = 10;
 
+    public SoundController soundController;
+
     // Start is called before the first frame update
     void Start()
     {
+        soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
         InvokeRepeating("ShootProjectile", .5f, 2f);
     }
 
@@ -24,6 +27,7 @@ public class EnemyController : MonoBehaviour
 
     void ShootProjectile() {
         Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
+        soundController.audioSource.PlayOneShot(soundController.projectileSound);
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -35,7 +39,7 @@ public class EnemyController : MonoBehaviour
 
         if (gameObjectTagIsPlayerBullet) {
             Debug.Log("Award player points");
-
+            soundController.audioSource.PlayOneShot(soundController.explosionSound);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
