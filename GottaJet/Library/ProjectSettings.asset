@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 18
-  productGUID: 94d812638bbaa7a43889a89b48eafaeb
+  productGUID: 37853dea551a3124089b8ad9a19e8e57
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -241,7 +241,7 @@ PlayerSettings:
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
-  clonedFromGUID: a442de07044154aa69a489d9ba045fd4
+  clonedFromGUID: 81affceda6f5c1740af968fa9cf2038d
   templatePackageId: 
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   AndroidTargetArchitectures: 5
@@ -603,7 +603,6 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 1
     UNet: 1
   luminIcon:
     m_Name: 

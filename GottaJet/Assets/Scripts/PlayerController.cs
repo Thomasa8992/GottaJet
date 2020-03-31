@@ -6,15 +6,20 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float MovementSpeed = 10;
+
     public GameObject projectile;
+
     public float fireRate = 0.5F;
     private float nextFire = 0.0F;
+
     public GameObject fuel;
+
+    private SoundController soundController;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
     }
 
     // Update is called once per frame
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerCollision(Collision collision) {
+        soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
         handleGameOverSequence(collision);
         Destroy(collision.gameObject);
         Destroy(gameObject);
@@ -58,6 +64,7 @@ public class PlayerController : MonoBehaviour
             var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2));
 
             Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
+            soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);
         }
     }
 

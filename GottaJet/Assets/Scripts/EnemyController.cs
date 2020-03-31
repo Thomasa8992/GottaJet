@@ -30,13 +30,13 @@ public class EnemyController : MonoBehaviour
         HandlePlayerBulletCollision(collision);
     }
 
-    private void HandlePlayerBulletCollision(Collision collision) {
-        var gameObjectTagIsPlayerBullet = collision.gameObject.CompareTag("PlayerBullet");
+    private void HandlePlayerBulletCollision(Collision other) {
+        var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
 
         if (gameObjectTagIsPlayerBullet) {
             Debug.Log("Award player points");
 
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }

@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 20
-  enemy: {fileID: 3619440164190902212, guid: c47267b405b631b4693b99a447eb1ea3, type: 3}
 --- !u!114 &114302023808454922
 MonoBehaviour:
   m_ObjectHideFlags: 0

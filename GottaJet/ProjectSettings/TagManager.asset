@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fuel
   - EnemyBullet
-  - Debris
-  - EnemyAirplane
   - PlayerBullet
+  - Fuel
   layers:
   - Default
   - TransparentFX
