@@ -39,8 +39,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private static void handleFuelCollision(Collision collision) {
+    private void handleFuelCollision(Collision collision) {
         Debug.Log("Award player fuel and points");
+        soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
+
         Destroy(collision.gameObject);
     }
 
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
     private void handleGameOverSequence(Collision collision) {
         Debug.Log("Game Over");
 
-        //SceneManager.LoadScene("Challenge 1");
+        SceneManager.LoadScene("Challenge 1");
     }
 
     private void shootProjectile() {

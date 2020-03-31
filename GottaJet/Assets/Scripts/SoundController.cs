@@ -6,6 +6,8 @@ public class SoundController : MonoBehaviour
 {
     public AudioClip explosionSound;
     public AudioClip projectileSound;
+    public AudioClip fuelCollectionSound;
+
     public AudioSource audioSource;
 
     // Start is called before the first frame update

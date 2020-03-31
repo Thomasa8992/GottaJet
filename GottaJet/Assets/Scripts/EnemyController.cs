@@ -40,8 +40,10 @@ public class EnemyController : MonoBehaviour
     private void HandlePlayerBulletCollision(Collision other) {
         var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
         var incomingGameObject = other.gameObject;
+
         if (gameObjectTagIsPlayerBullet) {
             Debug.Log("Award player points");
+            soundController.audioSource.PlayOneShot(soundController.explosionSound);
             Instantiate(explosionParticleEffect, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(other.gameObject);
             Destroy(gameObject);
