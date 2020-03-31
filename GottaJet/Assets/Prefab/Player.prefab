@@ -112,8 +112,8 @@ MonoBehaviour:
     type: 3}
   fireRate: 0.5
   fuel: {fileID: 1835285693053155749, guid: 7eb7d52b7dfaaae479dbe9fb1d84c660, type: 3}
-  projectileSound: {fileID: 8300000, guid: 0f7d0b7c3397f4dac91f20e8a77d2d57, type: 3}
-  explosionSound: {fileID: 8300000, guid: e7ee25a47d63b46cdaf65480d62b405c, type: 3}
+  explosionParticleEffect: {fileID: 4159002473853570603, guid: 936fe5394f8b5a24a962c64338ee73f4,
+    type: 3}
 --- !u!82 &2970929542280215989
 AudioSource:
   m_ObjectHideFlags: 0

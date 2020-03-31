@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private SoundController soundController;
 
+    public GameObject explosionParticleEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +32,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(!collision.gameObject.CompareTag("Fuel")) {
-            handlePlayerCollision(collision);
-        } else {
+        if (collision.gameObject.CompareTag("Fuel")) {
             handleFuelCollision(collision);
+        } else {
+            handlePlayerCollision(collision);
         }
     }
 
@@ -42,17 +44,19 @@ public class PlayerController : MonoBehaviour
         Destroy(collision.gameObject);
     }
 
-    private void handlePlayerCollision(Collision collision) {
+    private void handlePlayerCollision(Collision other) {
         soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
-        handleGameOverSequence(collision);
-        Destroy(collision.gameObject);
+        Instantiate(explosionParticleEffect, transform.position, transform.rotation);
+        Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
+        handleGameOverSequence(other);
+        Destroy(other.gameObject);
         Destroy(gameObject);
     }
 
     private void handleGameOverSequence(Collision collision) {
         Debug.Log("Game Over");
 
-        SceneManager.LoadScene("Challenge 1");
+        //SceneManager.LoadScene("Challenge 1");
     }
 
     private void shootProjectile() {
