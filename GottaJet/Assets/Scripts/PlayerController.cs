@@ -41,21 +41,24 @@ public class PlayerController : MonoBehaviour
 
     private void handleFuelCollision(Collision collision) {
         Debug.Log("Award player fuel and points");
-        soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
+        soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
 
         Destroy(collision.gameObject);
     }
 
     private void handlePlayerCollision(Collision other) {
         soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
+
         Instantiate(explosionParticleEffect, transform.position, transform.rotation);
         Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
-        handleGameOverSequence(other);
+
+        handleGameOverSequence();
+
         Destroy(other.gameObject);
         Destroy(gameObject);
     }
 
-    private void handleGameOverSequence(Collision collision) {
+    private void handleGameOverSequence() {
         Debug.Log("Game Over");
 
         SceneManager.LoadScene("Challenge 1");

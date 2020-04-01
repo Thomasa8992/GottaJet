@@ -161,7 +161,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 131f425607820796717868b02ff18299 Assembly-CSharp.dll:.EnemyProjectile
 07c6eb3a55950dd70422c221c050da51 Assembly-CSharp.dll:.ExplosionParticleController
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-5f435aabcec0cd67c13a922ccef676e3 Assembly-CSharp.dll:.SoundController
+2334b8e0c0469a7221b9ed03d0997a6b Assembly-CSharp.dll:.SoundController
 df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh

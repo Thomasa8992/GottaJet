@@ -11,10 +11,13 @@ public class EnemyController : MonoBehaviour
 
     public GameObject explosionParticleEffect;
 
+    public ScoreKeeperController scoreKeeperController;
+
     // Start is called before the first frame update
     void Start()
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
+        scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
 
         InvokeRepeating("ShootProjectile", .5f, 2f);
     }
@@ -39,12 +42,14 @@ public class EnemyController : MonoBehaviour
 
     private void HandlePlayerBulletCollision(Collision other) {
         var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
-        var incomingGameObject = other.gameObject;
+        scoreKeeperController.score += 300;
 
         if (gameObjectTagIsPlayerBullet) {
-            Debug.Log("Award player points");
+
             soundController.audioSource.PlayOneShot(soundController.explosionSound);
+
             Instantiate(explosionParticleEffect, gameObject.transform.position, gameObject.transform.rotation);
+
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
