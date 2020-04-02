@@ -18,10 +18,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject explosionParticleEffect;
 
+    public ScoreKeeperController scoreKeeperController;
+
+
     // Start is called before the first frame update
     void Start()
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
+        scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
     }
 
     // Update is called once per frame
@@ -40,9 +44,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handleFuelCollision(Collision collision) {
-        Debug.Log("Award player fuel and points");
+        Debug.Log("Award player fuel");
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
-
+        scoreKeeperController.score += 200;
         Destroy(collision.gameObject);
     }
 
@@ -70,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (keyCodeIsPressedAndNextFireIsReady) {
             nextFire = Time.time + fireRate;
 
-            var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2));
+            var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, .7f, 2));
 
             Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
             soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);

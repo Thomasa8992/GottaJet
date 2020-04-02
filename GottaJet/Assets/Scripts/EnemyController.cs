@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
     }
 
     void ShootProjectile() {
-        Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, 1.1f, 2)), projectile.transform.rotation);
+        Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, .7f, 2)), projectile.transform.rotation);
         soundController.audioSource.PlayOneShot(soundController.projectileSound);
     }
 
