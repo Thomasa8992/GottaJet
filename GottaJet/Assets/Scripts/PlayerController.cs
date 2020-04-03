@@ -30,15 +30,18 @@ public class PlayerController : MonoBehaviour
 
     private int lives = 3;
 
+    private bool playerIsDead = false;
+    private MeshRenderer childrenMeshRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
         scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
 
-        playerStartingPosition = transform.position;
         meshCollider = gameObject.GetComponent<MeshCollider>();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -58,8 +61,10 @@ public class PlayerController : MonoBehaviour
 
     private void handleFuelCollision(Collision collision) {
         Debug.Log("Award player fuel");
+
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
         scoreKeeperController.score += 200;
+
         Destroy(collision.gameObject);
     }
 
@@ -76,10 +81,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerDeath(Collision other) {
-        var childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
         childrenMeshRenderer.enabled = false;
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
+        playerIsDead = true;
 
         lives -= 1;
 
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour
         transform.position = playerStartingPosition;
         childMeshRenderer.enabled = true;
         meshRenderer.enabled = true;
-
+        playerIsDead = false;
 
         yield return new WaitForSeconds(3);
         meshCollider.enabled = true;
@@ -166,8 +171,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerMovement() {
-        handleVerticalMovementByPlayerInput();
-        handleHorizontalMovementByPlayerInput();
+        if(!playerIsDead) {
+            handleVerticalMovementByPlayerInput();
+            handleHorizontalMovementByPlayerInput();
+        }
     }
 
     private void handleHorizontalMovementByPlayerInput() {
