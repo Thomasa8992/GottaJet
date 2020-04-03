@@ -31,7 +31,11 @@ public class PlayerController : MonoBehaviour
     private int lives = 3;
 
     private bool playerIsDead = false;
+
     private MeshRenderer childrenMeshRenderer;
+
+    public float fuelLevel = 100;
+    public float decreasePerMinute = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +53,9 @@ public class PlayerController : MonoBehaviour
         handlePlayerMovement();
         handlePlayerBoundaries();
         shootProjectile();
+
+        fuelLevel -= Time.deltaTime * decreasePerMinute / 60f;
+        Debug.Log(fuelLevel);
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -60,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handleFuelCollision(Collision collision) {
-        Debug.Log("Award player fuel");
+        fuelLevel += 40;
 
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
         scoreKeeperController.score += 200;
