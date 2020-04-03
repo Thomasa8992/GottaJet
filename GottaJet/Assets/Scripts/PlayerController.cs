@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private MeshCollider meshCollider;
 
     private MeshRenderer meshRenderer;
+
+    private int lives = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +67,9 @@ public class PlayerController : MonoBehaviour
         soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
 
         Instantiate(explosionParticleEffect, transform.position, transform.rotation);
-        Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
+        if(other.gameObject.CompareTag("EnemyAirplane")) {
+            Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
+        }
 
         Destroy(other.gameObject);
         handlePlayerDeath(other);
@@ -72,13 +77,18 @@ public class PlayerController : MonoBehaviour
 
     private void handlePlayerDeath(Collision other) {
         var childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
-
         childrenMeshRenderer.enabled = false;
-
-        meshRenderer.enabled = false;
         meshCollider.enabled = false;
+        meshRenderer.enabled = false;
 
-        StartCoroutine(PlayerDeathRoutine(other, childrenMeshRenderer));
+        lives -= 1;
+
+        Debug.Log(lives);
+        if (lives != 0) {
+            StartCoroutine(PlayerDeathRoutine(other, childrenMeshRenderer));
+        } else {
+            handleGameOverSequence();
+        }
     }
 
     IEnumerator PlayerDeathRoutine(Collision other, MeshRenderer childMeshRenderer) {
@@ -87,12 +97,15 @@ public class PlayerController : MonoBehaviour
         childMeshRenderer.enabled = true;
         meshRenderer.enabled = true;
 
+
         yield return new WaitForSeconds(3);
         meshCollider.enabled = true;
     }
 
     private void handleGameOverSequence() {
         Debug.Log("Game Over");
+
+        gameObject.SetActive(false);
     }
 
     private void shootProjectile() {
