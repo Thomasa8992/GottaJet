@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,12 +21,21 @@ public class PlayerController : MonoBehaviour
 
     public ScoreKeeperController scoreKeeperController;
 
+    private Vector3 playerStartingPosition;
+
+    private MeshCollider meshCollider;
+
+    private MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
         scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
+
+        playerStartingPosition = transform.position;
+        meshCollider = gameObject.GetComponent<MeshCollider>();
+        meshRenderer = gameObject.GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -56,16 +66,33 @@ public class PlayerController : MonoBehaviour
         Instantiate(explosionParticleEffect, transform.position, transform.rotation);
         Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
 
-        handleGameOverSequence();
-
         Destroy(other.gameObject);
-        Destroy(gameObject);
+        handlePlayerDeath(other);
+    }
+
+    private void handlePlayerDeath(Collision other) {
+        var childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
+
+        childrenMeshRenderer.enabled = false;
+
+        meshRenderer.enabled = false;
+        meshCollider.enabled = false;
+
+        StartCoroutine(PlayerDeathRoutine(other, childrenMeshRenderer));
+    }
+
+    IEnumerator PlayerDeathRoutine(Collision other, MeshRenderer childMeshRenderer) {
+        yield return new WaitForSeconds(3);
+        transform.position = playerStartingPosition;
+        childMeshRenderer.enabled = true;
+        meshRenderer.enabled = true;
+
+        yield return new WaitForSeconds(3);
+        meshCollider.enabled = true;
     }
 
     private void handleGameOverSequence() {
         Debug.Log("Game Over");
-
-        SceneManager.LoadScene("Challenge 1");
     }
 
     private void shootProjectile() {
