@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public GameObject explosionParticleEffect;
 
     public ScoreKeeperController scoreKeeperController;
-
+    private HighScoreController highScoreController;
     private Vector3 playerStartingPosition;
 
     private MeshCollider meshCollider;
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
         scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
+        highScoreController = GameObject.Find("HighScoreKeeper").GetComponent<HighScoreController>();
 
         meshCollider = gameObject.GetComponent<MeshCollider>();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
@@ -116,8 +117,19 @@ public class PlayerController : MonoBehaviour
 
     private void handleGameOverSequence() {
         Debug.Log("Game Over");
+        CalculateHighScore();
+        scoreKeeperController.score = 0;
+        lives = 3;
+        fuelLevel = 100;
+        playerIsDead = false;
 
-        gameObject.SetActive(false);
+        transform.position = playerStartingPosition;
+    }
+
+    private void CalculateHighScore() {
+        if (scoreKeeperController.score > highScoreController.highScore) {
+            highScoreController.highScore = scoreKeeperController.score;
+        }
     }
 
     private void shootProjectile() {

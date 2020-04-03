@@ -16,6 +16,6 @@ public class ScoreKeeperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreComponent.text = "Score " + score;
+        scoreComponent.text = "Score: " + score;
     }
 }

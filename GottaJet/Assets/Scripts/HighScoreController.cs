@@ -16,6 +16,6 @@ public class HighScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        highScoreComponent.text = "High Score" + highScore;
+        highScoreComponent.text = "High Score: " + highScore;
     }
 }
