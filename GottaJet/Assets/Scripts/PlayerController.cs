@@ -32,9 +32,6 @@ public class PlayerController : MonoBehaviour
 
     private MeshRenderer childrenMeshRenderer;
 
-    public float fuelLevel = 100;
-    public float decreasePerMinute = 100;
-
     private LifeKeeperController lifeKeeperController;
 
     // Start is called before the first frame update
@@ -49,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
         lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
         childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
+
+        playerStartingPosition = transform.position;
+
     }
 
     // Update is called once per frame
@@ -57,9 +57,6 @@ public class PlayerController : MonoBehaviour
         handlePlayerBoundaries();
         shootProjectile();
         CalculateHighScore();
-
-        fuelLevel -= Time.deltaTime * decreasePerMinute / 60f;
-        //Debug.Log(fuelLevel);
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -76,8 +73,6 @@ public class PlayerController : MonoBehaviour
 
 
     private void handleFuelCollision(Collider other) {
-        fuelLevel += 40;
-
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
         scoreKeeperController.score += 200;
 
@@ -127,7 +122,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Game Over");
         scoreKeeperController.score = 0;
         lifeKeeperController.lives = 3;
-        fuelLevel = 100;
+        //fuelLevel = 100;
         playerIsDead = false;
         childrenMeshRenderer.enabled = true;
         meshRenderer.enabled = true;
