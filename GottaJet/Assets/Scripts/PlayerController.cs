@@ -56,30 +56,36 @@ public class PlayerController : MonoBehaviour
         shootProjectile();
 
         fuelLevel -= Time.deltaTime * decreasePerMinute / 60f;
-        Debug.Log(fuelLevel);
+        //Debug.Log(fuelLevel);
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Fuel")) {
-            handleFuelCollision(collision);
+
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Fuel")) {
+            handleFuelCollision(other);
         } else {
-            handlePlayerCollision(collision);
+            handlePlayerCollision(other);
         }
     }
 
-    private void handleFuelCollision(Collision collision) {
+
+    private void handleFuelCollision(Collider other) {
         fuelLevel += 40;
 
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
         scoreKeeperController.score += 200;
 
-        Destroy(collision.gameObject);
+        Destroy(other.gameObject);
     }
 
-    private void handlePlayerCollision(Collision other) {
+    private void handlePlayerCollision(Collider other) {
         soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
 
         Instantiate(explosionParticleEffect, transform.position, transform.rotation);
+
         if(other.gameObject.CompareTag("EnemyAirplane")) {
             Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
         }
@@ -88,7 +94,7 @@ public class PlayerController : MonoBehaviour
         handlePlayerDeath(other);
     }
 
-    private void handlePlayerDeath(Collision other) {
+    private void handlePlayerDeath(Collider other) {
         childrenMeshRenderer.enabled = false;
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
@@ -98,16 +104,16 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(lives);
         if (lives != 0) {
-            StartCoroutine(PlayerDeathRoutine(other, childrenMeshRenderer));
+            StartCoroutine(PlayerDeathRoutine(other));
         } else {
             handleGameOverSequence();
         }
     }
 
-    IEnumerator PlayerDeathRoutine(Collision other, MeshRenderer childMeshRenderer) {
+    IEnumerator PlayerDeathRoutine(Collider other) {
         yield return new WaitForSeconds(3);
         transform.position = playerStartingPosition;
-        childMeshRenderer.enabled = true;
+        childrenMeshRenderer.enabled = true;
         meshRenderer.enabled = true;
         playerIsDead = false;
 
@@ -122,6 +128,9 @@ public class PlayerController : MonoBehaviour
         lives = 3;
         fuelLevel = 100;
         playerIsDead = false;
+        childrenMeshRenderer.enabled = true;
+        meshRenderer.enabled = true;
+        meshCollider.enabled = true;
 
         transform.position = playerStartingPosition;
     }

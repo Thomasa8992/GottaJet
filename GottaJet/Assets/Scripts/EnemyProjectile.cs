@@ -18,8 +18,8 @@ public class EnemyProjectile : MonoBehaviour
         transform.Translate(Vector3.back * Time.deltaTime * movementSpeed);
     }
 
-    void OnTriggerEnter(Collider other) {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-    }
+    //void OnTriggerEnter(Collider other) {
+    //        Destroy(gameObject);
+    //        Destroy(other.gameObject);
+    //}
 }

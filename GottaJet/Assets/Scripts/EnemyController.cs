@@ -36,11 +36,15 @@ public class EnemyController : MonoBehaviour
         soundController.audioSource.PlayOneShot(soundController.projectileSound);
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        HandlePlayerBulletCollision(collision);
+    //private void OnCollisionEnter(Collision collision) {
+    //    HandlePlayerBulletCollision(collision);
+    //}
+
+    private void OnTriggerEnter(Collider other) {
+        HandlePlayerBulletCollision(other);
     }
 
-    private void HandlePlayerBulletCollision(Collision other) {
+    private void HandlePlayerBulletCollision(Collider other) {
         var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
         scoreKeeperController.score += 300;
 
