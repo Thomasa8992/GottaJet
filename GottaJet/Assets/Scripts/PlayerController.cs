@@ -28,14 +28,14 @@ public class PlayerController : MonoBehaviour
 
     private MeshRenderer meshRenderer;
 
-    private int lives = 3;
-
     private bool playerIsDead = false;
 
     private MeshRenderer childrenMeshRenderer;
 
     public float fuelLevel = 100;
     public float decreasePerMinute = 100;
+
+    private LifeKeeperController lifeKeeperController;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
         meshCollider = gameObject.GetComponent<MeshCollider>();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
+
+        lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
         childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
     }
 
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
         handlePlayerMovement();
         handlePlayerBoundaries();
         shootProjectile();
+        CalculateHighScore();
 
         fuelLevel -= Time.deltaTime * decreasePerMinute / 60f;
         //Debug.Log(fuelLevel);
@@ -100,10 +103,9 @@ public class PlayerController : MonoBehaviour
         meshRenderer.enabled = false;
         playerIsDead = true;
 
-        lives -= 1;
+        lifeKeeperController.lives -= 1;
 
-        Debug.Log(lives);
-        if (lives != 0) {
+        if (lifeKeeperController.lives != 0) {
             StartCoroutine(PlayerDeathRoutine(other));
         } else {
             handleGameOverSequence();
@@ -123,9 +125,8 @@ public class PlayerController : MonoBehaviour
 
     private void handleGameOverSequence() {
         Debug.Log("Game Over");
-        CalculateHighScore();
         scoreKeeperController.score = 0;
-        lives = 3;
+        lifeKeeperController.lives = 3;
         fuelLevel = 100;
         playerIsDead = false;
         childrenMeshRenderer.enabled = true;
