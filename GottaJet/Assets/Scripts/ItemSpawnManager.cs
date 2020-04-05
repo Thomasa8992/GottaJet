@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemSpawnManager : MonoBehaviour
 {
     public GameObject[] items;
-    private float spawnRangeZ = 25;
+    private float spawnRangeZ = 14;
     private float spawnPositionY = 10;
 
 

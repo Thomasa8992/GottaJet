@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerLeftBoundary() {
-        var leftBoundary = -22;
+        var leftBoundary = -14;
         var playerHasReachLeftBoundary = transform.position.z < leftBoundary;
 
         if (playerHasReachLeftBoundary) {
@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerRightBoundary() {
-        var rightBoundary = 22;
+        var rightBoundary = 14;
         var playerHasReachedRightBoundary = transform.position.z > rightBoundary;
 
         if (playerHasReachedRightBoundary) {
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerTopBoundary() {
-        var TopBoundary = 7;
+        var TopBoundary = 8;
         var playerHasReachedTopBoundary = transform.position.y > TopBoundary;
 
         if (playerHasReachedTopBoundary) {
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void handlePlayerBottomBoundary() {
-        var BottomBoundary = -8;
+        var BottomBoundary = -7;
         var playerHasReachedBottomBoundary = transform.position.y < BottomBoundary;
 
         if (playerHasReachedBottomBoundary) {

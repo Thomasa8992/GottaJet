@@ -17,7 +17,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     }
 
     private void DestroyOutOfBoundsOnLowerScreenBoundary() {
-        var outOfBoundsYPosition = -10;
+        var outOfBoundsYPosition = -8;
 
         if (transform.position.y < outOfBoundsYPosition) {
             Destroy(gameObject);
@@ -25,7 +25,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     }
 
     private void DestroyOutOfBoundsObjectOnRightBoundary() {
-        var rightOutOfBoundsZPosition = 35;
+        var rightOutOfBoundsZPosition = 20;
          
         if (transform.position.z > rightOutOfBoundsZPosition) {
             Destroy(gameObject);
@@ -33,7 +33,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     }
 
     private void DestroyGameObjectsOnLeftBoundary() {
-        var leftOutOfBoundsZPosition = -35;
+        var leftOutOfBoundsZPosition = -20;
 
         if (transform.position.z < leftOutOfBoundsZPosition) {
             Destroy(gameObject);
