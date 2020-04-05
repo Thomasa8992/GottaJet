@@ -6,7 +6,7 @@ public class EnemySpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
     private float spawnRangeY = 7;
-    private float spawnPositionZ = 18;
+    private float spawnPositionZ = 14;
 
     // Start is called before the first frame update
     void Start()

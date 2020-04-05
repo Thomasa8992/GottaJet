@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3619440164190902202}
   - component: {fileID: 114811414152932798}
   - component: {fileID: 54873185521934692}
+  - component: {fileID: 114100956278481910}
   m_Layer: 0
   m_Name: EnemyAirplane
   m_TagString: EnemyAirplane
@@ -129,6 +130,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &114100956278481910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619440164190902212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaaf658ecf33c946841bfbe54552705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3619440164889264663
 GameObject:
   m_ObjectHideFlags: 0

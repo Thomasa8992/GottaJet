@@ -69,13 +69,16 @@ public class PlayerController : MonoBehaviour
 
 
     private void ShootProjectile() {
+        handleFireRate();
+        var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, .7f, 2));
+        
         if (!playerIsDead) {
-            var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire;
-            
+            var nextFireIsREady = Time.time > nextFire;
+            var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && nextFireIsREady;
+                
             if (keyCodeIsPressedAndNextFireIsReady) {
-                handleFireRate();
 
-                var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, .7f, 2));
+                nextFire = Time.time + fireRate;
 
                 Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
                 soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);
@@ -90,7 +93,6 @@ public class PlayerController : MonoBehaviour
             fireRate = 0.5f;
         }
 
-        nextFire = Time.time + fireRate;
     }
 
     #region collision
