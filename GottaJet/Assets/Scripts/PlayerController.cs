@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float MovementSpeed = 10;
+    public float playerMovementSpeed = 10;
 
     public GameObject projectile;
     private bool fireRateIsIncreased = false;
@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     private void ShootProjectile() {
         if (!playerIsDead) {
             var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire;
@@ -96,11 +98,30 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Gem")) {
             HandleGemCollision(other);
-        } else if(other.CompareTag("FireBooster")) {
+        } 
+        else if (other.CompareTag("FireBooster")) {
             HandleFireBoosterCollision(other);
-        } else {
+        } 
+        else if (other.CompareTag("SpeedBoost")) {
+            HandleSpeedBoostCollision(other); 
+        } 
+        else {
             HandlePlayerCollision(other);
         }
+    }
+
+    private void HandleSpeedBoostCollision(Collider other) {
+        Destroy(other.gameObject);
+
+        StartCoroutine(HandleIncreaedPlayerMovement());
+    }
+
+    IEnumerator HandleIncreaedPlayerMovement() {
+        playerMovementSpeed = 18;
+
+        yield return new WaitForSeconds(10);
+
+        playerMovementSpeed = 10;
     }
 
     private void HandleFireBoosterCollision(Collider other) {
@@ -281,14 +302,14 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHorizontalMovementByPlayerInput() {
         var horizontalInput = Input.GetAxis("Horizontal");
-        var horizontalMovement = Vector3.forward * Time.deltaTime * MovementSpeed * horizontalInput;
+        var horizontalMovement = Vector3.forward * Time.deltaTime * playerMovementSpeed * horizontalInput;
 
         transform.Translate(horizontalMovement);
     }
 
     private void HandleVerticalMovementByPlayerInput() {
         var verticalInput = Input.GetAxis("Vertical");
-        var verticalMovement = Vector3.up * Time.deltaTime * MovementSpeed * verticalInput;
+        var verticalMovement = Vector3.up * Time.deltaTime * playerMovementSpeed * verticalInput;
 
         transform.Translate(verticalMovement);
     }

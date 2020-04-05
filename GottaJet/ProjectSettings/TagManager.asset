@@ -11,6 +11,7 @@ TagManager:
   - Debris
   - Gem
   - FireBooster
+  - SpeedBoost
   layers:
   - Default
   - TransparentFX
