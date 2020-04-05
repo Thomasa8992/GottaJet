@@ -16,6 +16,8 @@ public class HighScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        highScore = PlayerPrefs.GetInt("highScore", highScore);
+        Debug.Log(highScore);
         highScoreComponent.text = "High Score: " + highScore;
     }
 }

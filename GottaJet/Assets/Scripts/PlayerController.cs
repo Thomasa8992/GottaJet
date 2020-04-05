@@ -53,33 +53,52 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        handlePlayerMovement();
-        handlePlayerBoundaries();
-        shootProjectile();
+        HandlePlayerMovement();
+        HandlePlayerBoundaries();
+        ShootProjectile();
         CalculateHighScore();
     }
-
-    private void OnCollisionEnter(Collision collision) {
-
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Fuel")) {
-            handleFuelCollision(other);
-        } else {
-            handlePlayerCollision(other);
+    private void CalculateHighScore() {
+        if (scoreKeeperController.score > highScoreController.highScore) {
+            highScoreController.highScore = scoreKeeperController.score;
+            PlayerPrefs.SetInt("highScore", highScoreController.highScore);
+            PlayerPrefs.Save();
         }
     }
 
+    private void ShootProjectile() {
+        if (!playerIsDead) {
+            var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire;
 
-    private void handleFuelCollision(Collider other) {
+            if (keyCodeIsPressedAndNextFireIsReady) {
+                nextFire = Time.time + fireRate;
+
+                var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, .7f, 2));
+
+                Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
+                soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);
+            }
+        }
+    }
+
+    #region collision
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Fuel")) {
+            HandleFuelCollision(other);
+        } else {
+            HandlePlayerCollision(other);
+        }
+    }
+
+    private void HandleFuelCollision(Collider other) {
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
         scoreKeeperController.score += 200;
 
         Destroy(other.gameObject);
     }
 
-    private void handlePlayerCollision(Collider other) {
+    private void HandlePlayerCollision(Collider other) {
         soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
 
         Instantiate(explosionParticleEffect, transform.position, transform.rotation);
@@ -89,10 +108,10 @@ public class PlayerController : MonoBehaviour
         }
 
         Destroy(other.gameObject);
-        handlePlayerDeath(other);
+        HandlePlayerDeath(other);
     }
 
-    private void handlePlayerDeath(Collider other) {
+    private void HandlePlayerDeath(Collider other) {
         childrenMeshRenderer.enabled = false;
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
@@ -103,7 +122,7 @@ public class PlayerController : MonoBehaviour
         if (lifeKeeperController.lives != 0) {
             StartCoroutine(PlayerDeathRoutine(other));
         } else {
-            handleGameOverSequence();
+            HandleGameOverSequence();
         }
     }
 
@@ -118,46 +137,83 @@ public class PlayerController : MonoBehaviour
         meshCollider.enabled = true;
     }
 
-    private void handleGameOverSequence() {
+    private void OnCollisionEnter(Collision other) {
+        var gameObjectTagIsPlayer = other.gameObject.CompareTag("Player");
+
+        if (gameObjectTagIsPlayer) {
+            lifeKeeperController.lives -= 1;
+            soundController.audioSource.PlayOneShot(soundController.explosionSound);
+            Instantiate(explosionParticleEffect, gameObject.transform.position, gameObject.transform.rotation);
+
+            Destroy(other.gameObject);
+            HandlePlayerCollision(other);
+        }
+    }
+
+    private void HandlePlayerCollision(Collision other) {
+        soundController.audioSource.PlayOneShot(soundController.explosionSound, 1);
+
+        Instantiate(explosionParticleEffect, transform.position, transform.rotation);
+
+        if (other.gameObject.CompareTag("EnemyAirplane")) {
+            Instantiate(explosionParticleEffect, other.transform.position, other.transform.rotation);
+        }
+
+        Destroy(other.gameObject);
+        HandlePlayerDeath(other);
+    }
+
+    private void HandlePlayerDeath(Collision other) {
+        childrenMeshRenderer.enabled = false;
+        meshCollider.enabled = false;
+        meshRenderer.enabled = false;
+        playerIsDead = true;
+
+        lifeKeeperController.lives -= 1;
+
+        if (lifeKeeperController.lives != 0) {
+            StartCoroutine(PlayerDeathRoutine(other));
+        } else {
+            HandleGameOverSequence();
+        }
+    }
+
+    IEnumerator PlayerDeathRoutine(Collision other) {
+        yield return new WaitForSeconds(3);
+        transform.position = playerStartingPosition;
+        childrenMeshRenderer.enabled = true;
+        meshRenderer.enabled = true;
+        playerIsDead = false;
+
+        yield return new WaitForSeconds(3);
+        meshCollider.enabled = true;
+    }
+
+    private void HandleGameOverSequence() {
         Debug.Log("Game Over");
         scoreKeeperController.score = 0;
         lifeKeeperController.lives = 3;
         //fuelLevel = 100;
         playerIsDead = false;
-        childrenMeshRenderer.enabled = true;
-        meshRenderer.enabled = true;
-        meshCollider.enabled = true;
+        //childrenMeshRenderer.enabled = true;
+        //meshRenderer.enabled = true;
+        //meshCollider.enabled = true;
 
-        transform.position = playerStartingPosition;
+        //transform.position = playerStartingPosition;
+        SceneManager.LoadScene("Challenge 1");
     }
 
-    private void CalculateHighScore() {
-        if (scoreKeeperController.score > highScoreController.highScore) {
-            highScoreController.highScore = scoreKeeperController.score;
-        }
+    #endregion
+
+    #region player boundaries
+    private void HandlePlayerBoundaries() {
+        HandlePlayerLeftBoundary();
+        HandlePlayerRightBoundary();
+        HandlePlayerTopBoundary();
+        HandlePlayerBottomBoundary();
     }
 
-    private void shootProjectile() {
-        var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire;
-
-        if (keyCodeIsPressedAndNextFireIsReady) {
-            nextFire = Time.time + fireRate;
-
-            var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, .7f, 2));
-
-            Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
-            soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);
-        }
-    }
-
-    private void handlePlayerBoundaries() {
-        handlePlayerLeftBoundary();
-        handlePlayerRightBoundary();
-        handlePlayerTopBoundary();
-        handlePlayerBottomBoundary();
-    }
-
-    private void handlePlayerLeftBoundary() {
+    private void HandlePlayerLeftBoundary() {
         var leftBoundary = -14;
         var playerHasReachLeftBoundary = transform.position.z < leftBoundary;
 
@@ -166,7 +222,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void handlePlayerRightBoundary() {
+    private void HandlePlayerRightBoundary() {
         var rightBoundary = 14;
         var playerHasReachedRightBoundary = transform.position.z > rightBoundary;
 
@@ -175,7 +231,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void handlePlayerTopBoundary() {
+    private void HandlePlayerTopBoundary() {
         var TopBoundary = 8;
         var playerHasReachedTopBoundary = transform.position.y > TopBoundary;
 
@@ -184,7 +240,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void handlePlayerBottomBoundary() {
+    private void HandlePlayerBottomBoundary() {
         var BottomBoundary = -7;
         var playerHasReachedBottomBoundary = transform.position.y < BottomBoundary;
 
@@ -194,24 +250,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void handlePlayerMovement() {
+    #endregion
+
+    #region player movement
+    private void HandlePlayerMovement() {
         if(!playerIsDead) {
-            handleVerticalMovementByPlayerInput();
-            handleHorizontalMovementByPlayerInput();
+            HandleHorizontalMovementByPlayerInput();
+            HandleVerticalMovementByPlayerInput();
         }
     }
 
-    private void handleHorizontalMovementByPlayerInput() {
+    private void HandleHorizontalMovementByPlayerInput() {
         var horizontalInput = Input.GetAxis("Horizontal");
         var horizontalMovement = Vector3.forward * Time.deltaTime * MovementSpeed * horizontalInput;
 
         transform.Translate(horizontalMovement);
     }
 
-    private void handleVerticalMovementByPlayerInput() {
+    private void HandleVerticalMovementByPlayerInput() {
         var verticalInput = Input.GetAxis("Vertical");
         var verticalMovement = Vector3.up * Time.deltaTime * MovementSpeed * verticalInput;
 
         transform.Translate(verticalMovement);
     }
+    #endregion
 }

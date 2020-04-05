@@ -13,11 +13,14 @@ public class EnemyController : MonoBehaviour
 
     public ScoreKeeperController scoreKeeperController;
 
+    public LifeKeeperController lifeKeeperController;
+
     // Start is called before the first frame update
     void Start()
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
         scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
+        lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
 
         InvokeRepeating("ShootProjectile", .5f, 2f);
     }
@@ -35,10 +38,6 @@ public class EnemyController : MonoBehaviour
         Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, .7f, 2)), projectile.transform.rotation);
         soundController.audioSource.PlayOneShot(soundController.projectileSound);
     }
-
-    //private void OnCollisionEnter(Collision collision) {
-    //    HandlePlayerBulletCollision(collision);
-    //}
 
     private void OnTriggerEnter(Collider other) {
         HandlePlayerBulletCollision(other);
