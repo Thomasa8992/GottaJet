@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public int fallSpeed;
+    public float fallSpeed;
     // Start is called before the first frame update
     void Start()
     {

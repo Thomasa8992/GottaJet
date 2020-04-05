@@ -10,6 +10,7 @@ TagManager:
   - EnemyAirplane
   - Debris
   - Gem
+  - FireBooster
   layers:
   - Default
   - TransparentFX

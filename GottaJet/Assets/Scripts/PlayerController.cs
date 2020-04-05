@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public float MovementSpeed = 10;
 
     public GameObject projectile;
-
-    public float fireRate = 0.5F;
+    private bool fireRateIsIncreased = false;
+    private float fireRate = 0.5F;
     private float nextFire = 0.0F;
 
     public GameObject fuel;
@@ -69,9 +69,9 @@ public class PlayerController : MonoBehaviour
     private void ShootProjectile() {
         if (!playerIsDead) {
             var keyCodeIsPressedAndNextFireIsReady = (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && Time.time > nextFire;
-
+            
             if (keyCodeIsPressedAndNextFireIsReady) {
-                nextFire = Time.time + fireRate;
+                handleFireRate();
 
                 var projectilePositionRelativeToPlayerPosition = transform.position + transform.TransformDirection(new Vector3(0, .7f, 2));
 
@@ -81,20 +81,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void handleFireRate() {
+        if (fireRateIsIncreased) {
+            fireRate = 0;
+        } else {
+            fireRate = 0.5f;
+        }
+
+        nextFire = Time.time + fireRate;
+    }
+
     #region collision
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Gem")) {
             HandleGemCollision(other);
+        } else if(other.CompareTag("FireBooster")) {
+            HandleFireBoosterCollision(other);
         } else {
             HandlePlayerCollision(other);
         }
     }
 
+    private void HandleFireBoosterCollision(Collider other) {
+        Destroy(other.gameObject);
+        StartCoroutine(HandleFireRateChange());
+    }
+
+    IEnumerator HandleFireRateChange() {
+        fireRateIsIncreased = true;
+
+        yield return new WaitForSeconds(10);
+
+        fireRateIsIncreased = false;
+    }
+
     private void HandleGemCollision(Collider other) {
-        Debug.Log("Gem");
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
-        scoreKeeperController.score += 1200;
+
+        var gemPoints = 1200;
+
+        scoreKeeperController.score += gemPoints;
 
         Destroy(other.gameObject);
     }
