@@ -84,16 +84,17 @@ public class PlayerController : MonoBehaviour
     #region collision
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Fuel")) {
-            HandleFuelCollision(other);
+        if (other.CompareTag("Gem")) {
+            HandleGemCollision(other);
         } else {
             HandlePlayerCollision(other);
         }
     }
 
-    private void HandleFuelCollision(Collider other) {
+    private void HandleGemCollision(Collider other) {
+        Debug.Log("Gem");
         soundController.audioSource.PlayOneShot(soundController.fuelCollectionSound, 1);
-        scoreKeeperController.score += 200;
+        scoreKeeperController.score += 1200;
 
         Destroy(other.gameObject);
     }
@@ -138,10 +139,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        var gameObjectTagIsPlayer = other.gameObject.CompareTag("Player");
+        var gameObjectTagIsEnemy = other.gameObject.CompareTag("EnemyAirplane");
 
-        if (gameObjectTagIsPlayer) {
-            lifeKeeperController.lives -= 1;
+        if (gameObjectTagIsEnemy) {
+            lifeKeeperController.lives -= 1 - 1;
             soundController.audioSource.PlayOneShot(soundController.explosionSound);
             Instantiate(explosionParticleEffect, gameObject.transform.position, gameObject.transform.rotation);
 
@@ -191,15 +192,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGameOverSequence() {
         Debug.Log("Game Over");
-        scoreKeeperController.score = 0;
-        lifeKeeperController.lives = 3;
-        //fuelLevel = 100;
-        playerIsDead = false;
-        //childrenMeshRenderer.enabled = true;
-        //meshRenderer.enabled = true;
-        //meshCollider.enabled = true;
-
-        //transform.position = playerStartingPosition;
         SceneManager.LoadScene("Challenge 1");
     }
 

@@ -6,7 +6,7 @@ public class FuelKeeperController : MonoBehaviour
 {
     public int fuelLevel = 100;
     public int curretLevel = 50;
-    private float decreasePerMinute = .5f;
+    //private float decreasePerMinute = .5f;
     public Vector3 startingScale;
 
     // Start is called before the first frame update

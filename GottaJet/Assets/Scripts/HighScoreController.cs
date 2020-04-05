@@ -17,7 +17,6 @@ public class HighScoreController : MonoBehaviour
     void Update()
     {
         highScore = PlayerPrefs.GetInt("highScore", highScore);
-        Debug.Log(highScore);
         highScoreComponent.text = "High Score: " + highScore;
     }
 }
