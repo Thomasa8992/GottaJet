@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 7488000615698770528, guid: 50b6cffbdb320f14fa5184868e0eeb9b,
     type: 3}
+  movementSpeed: 10
   explosionParticleEffect: {fileID: 4159002473853570603, guid: 936fe5394f8b5a24a962c64338ee73f4,
     type: 3}
   scoreKeeperController: {fileID: 0}

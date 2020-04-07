@@ -1,77 +1,84 @@
 /target:library
 /nowarn:0169
-/out:Temp/Unity.TextMeshPro.dll
+/out:Temp/Assembly-CSharp.dll
 /debug:portable
 /optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.AIModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ARModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.AccessibilityModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.AnimationModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.AssetBundleModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.AudioModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.BaselibModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ClothModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ClusterInputModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ClusterRendererModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.CoreModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.CrashReportingModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.DirectorModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.FileSystemHttpModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.GameCenterModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.GridModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.HotReloadModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.IMGUIModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ImageConversionModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.InputModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.JSONSerializeModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.LocalizationModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ParticleSystemModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.PerformanceReportingModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.PhysicsModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.Physics2DModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ProfilerModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.ScreenCaptureModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.SharedInternalsModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.SpriteMaskModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.SpriteShapeModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.StreamingModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.StyleSheetsModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.SubstanceModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TLSModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TerrainModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TerrainPhysicsModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TextCoreModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TextRenderingModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TilemapModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.TimelineModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UIModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UIElementsModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UNETModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UmbraModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityAnalyticsModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityConnectModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityTestProtocolModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityWebRequestModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityWebRequestAudioModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityWebRequestTextureModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.UnityWebRequestWWWModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.VFXModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.VRModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.VehiclesModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.VideoModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.WindModule.dll"
-/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\PlaybackEngines\windowsstandalonesupport/Managed/UnityEngine.XRModule.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/GUISystem/Standalone/UnityEngine.UI.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/Timeline/Runtime/UnityEngine.Timeline.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/Networking/Standalone/UnityEngine.Networking.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Runtime/UnityEngine.SpatialTracking.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.AnimationModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.AssetBundleModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.AudioModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.BaselibModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ClothModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.CoreModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.DirectorModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.FileSystemHttpModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.GameCenterModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.GridModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.HotReloadModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.IMGUIModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ImageConversionModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.InputModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.LocalizationModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.PhysicsModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.Physics2DModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ProfilerModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.StreamingModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.SubstanceModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TLSModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TextCoreModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TilemapModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.TimelineModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UIModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UIElementsModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UNETModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UmbraModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityConnectModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityTestProtocolModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.VFXModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.VRModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.VehiclesModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.VideoModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.WindModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/UnityEditor.dll"
+/reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\Managed/Unity.Locator.dll"
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
+/reference:Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll
+/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll"
+/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll"
+/reference:"C:/Program Files/Unity/Editor/Data/il2cpp/libil2cpp/os/Unity/2018.4.19f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll"
+/reference:C:/Users/thoma/OneDrive/Desktop/GottaJet/GottaJet/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll
 /reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\NetStandard\compat\2.0.0\shims\netstandard\Microsoft.Win32.Primitives.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp\os\Unity\2018.4.19f1\Editor\Data\NetStandard\compat\2.0.0\shims\netstandard\System.AppContext.dll"
@@ -204,6 +211,7 @@
 /define:UNITY_2018
 /define:PLATFORM_ARCH_64
 /define:UNITY_64
+/define:UNITY_INCLUDE_TESTS
 /define:ENABLE_AUDIO
 /define:ENABLE_CACHING
 /define:ENABLE_CLOTH
@@ -274,66 +282,34 @@
 /define:ENABLE_WEBSOCKET_HOST
 /define:ENABLE_MONO
 /define:NET_STANDARD_2_0
-/define:DEVELOPMENT_BUILD
 /define:ENABLE_PROFILER
 /define:DEBUG
 /define:TRACE
 /define:UNITY_ASSERTIONS
+/define:UNITY_EDITOR
+/define:UNITY_EDITOR_64
+/define:UNITY_EDITOR_WIN
+/define:ENABLE_UNITY_COLLECTIONS_CHECKS
+/define:ENABLE_BURST_AOT
+/define:UNITY_TEAM_LICENSE
+/define:ENABLE_VSTU
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\AssemblyInfo.cs.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\FastAction.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\MaterialReferenceManager.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TextContainer.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TextMeshPro.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TextMeshProUGUI.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Asset.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Character.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_CharacterInfo.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_ColorGradient.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_CoroutineTween.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_DefaultControls.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Dropdown.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_EditorResourceManager.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_FontAsset.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_FontAssetCommon.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_FontAssetUtilities.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_FontFeaturesCommon.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_FontFeatureTable.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_InputField.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_InputValidator.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_LineInfo.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_ListPool.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_MaterialManager.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_MeshInfo.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_ObjectPool.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_PackageResourceImporter.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_RichTextTagsCommon.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_RichTextTagStack.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_ScrollbarEventHandler.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SelectionCaret.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Settings.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_ShaderUtilities.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Sprite.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SpriteAnimator.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SpriteAsset.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SpriteAssetImportFormats.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SpriteCharacter.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SpriteGlyph.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Style.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_StyleSheet.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SubMesh.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_SubMeshUI.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_Text.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_TextElement.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_TextElement_Legacy.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_TextInfo.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_TextParsingUtilities.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_TextUtilities.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_UpdateManager.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMP_UpdateRegistery.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMPro_EventManager.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMPro_ExtensionMethods.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMPro_MeshUtilities.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMPro_Private.cs
-C:\Users\thoma\OneDrive\Desktop\GottaJet\GottaJet\Library\PackageCache\com.unity.textmeshpro@1.4.1\Scripts\Runtime\TMPro_UGUI_Private.cs
+Assets\Scripts\DebrisController.cs
+Assets\Scripts\DestroyOutOfBounds.cs
+Assets\Scripts\EnemyController.cs
+Assets\Scripts\EnemyProjectile.cs
+Assets\Scripts\EnemySpawnManager.cs
+Assets\Scripts\ExplosionParticleController.cs
+Assets\Scripts\FuelController.cs
+Assets\Scripts\FuelKeeperController.cs
+Assets\Scripts\HighScoreController.cs
+Assets\Scripts\ItemController.cs
+Assets\Scripts\ItemSpawnManager.cs
+Assets\Scripts\LifeKeeperController.cs
+Assets\Scripts\MoveLeft.cs
+Assets\Scripts\PlayerController.cs
+Assets\Scripts\ProjectileScript.cs
+Assets\Scripts\ScoreKeeperController.cs
+Assets\Scripts\SoundController.cs
+Assets\Scripts\SpinPropeller.cs
