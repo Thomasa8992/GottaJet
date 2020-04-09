@@ -159,8 +159,6 @@ public class PlayerController : MonoBehaviour
 
         if (gameManager.lives != 0) {
             StartCoroutine(PlayerDeathRoutine(other));
-        } else {
-            HandleGameOverSequence();
         }
     }
 
@@ -210,9 +208,7 @@ public class PlayerController : MonoBehaviour
 
         if (gameManager.lives != 0) {
             StartCoroutine(PlayerDeathRoutine(other));
-        } else {
-            HandleGameOverSequence();
-        }
+        } 
     }
 
     IEnumerator PlayerDeathRoutine(Collision other) {
@@ -224,11 +220,6 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         meshCollider.enabled = true;
-    }
-
-    private void HandleGameOverSequence() {
-        Debug.Log("Game Over");
-        SceneManager.LoadScene("Challenge 1");
     }
 
     #endregion

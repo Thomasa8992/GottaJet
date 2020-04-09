@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public int enemiesLeft;
 
+    public TextMeshProUGUI gameOverText;
+    public bool gameIsOver;
+
     // Start is called before the first frame update
     void Start() {
         score = 0;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateHighScore();
+        GameOver();
     }
 
     private void GetHighScore() {
@@ -64,6 +68,13 @@ public class GameManager : MonoBehaviour
         lives -= 1;
 
         GetLives();
+    }
+
+    public void GameOver() {
+        if(lives == 0) {
+            gameIsOver = true;
+            gameOverText.gameObject.SetActive(true);
+        }
     }
 
 }

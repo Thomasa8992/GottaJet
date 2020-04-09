@@ -7,12 +7,15 @@ public class ItemSpawnManager : MonoBehaviour
     public GameObject[] items;
     private float spawnRangeZ = 14;
     private float spawnPositionY = 10;
+    private GameManager gameManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomItem", 10, 12);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        StartCoroutine(SpawnRandomItem());
     }
 
     // Update is called once per frame
@@ -21,10 +24,14 @@ public class ItemSpawnManager : MonoBehaviour
         
     }
 
-    private void SpawnRandomItem() {
-        var spawnPosition = new Vector3(0, spawnPositionY, Random.Range(-spawnRangeZ, spawnRangeZ));
-        var itemIndex = Random.Range(0, items.Length);
+    IEnumerator SpawnRandomItem() {
+        while(!gameManager.gameIsOver) {
+            yield return new WaitForSeconds(10);
 
-        Instantiate(items[itemIndex], spawnPosition, items[itemIndex].transform.rotation);
+            var spawnPosition = new Vector3(0, spawnPositionY, Random.Range(-spawnRangeZ, spawnRangeZ));
+            var itemIndex = Random.Range(0, items.Length);
+
+            Instantiate(items[itemIndex], spawnPosition, items[itemIndex].transform.rotation);
+        }
     }
 }

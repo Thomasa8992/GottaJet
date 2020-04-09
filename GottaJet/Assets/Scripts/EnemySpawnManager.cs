@@ -11,8 +11,8 @@ public class EnemySpawnManager : MonoBehaviour {
 
     private GameManager gameManager;
 
-    public GameObject waveText;
-    private TextMesh waveTextMesh;
+    //public GameObject waveText;
+    //private TextMesh waveTextMesh;
 
     private float spawnRangeY = 7;
     private float spawnPositionZ = 14;
@@ -52,7 +52,7 @@ public class EnemySpawnManager : MonoBehaviour {
     }
 
     IEnumerator SpawnRandomEnemy() {
-        while (!newWaveHasStarted) {
+        while (!gameManager.gameIsOver) {
             yield return new WaitForSeconds(spawnRate);
             spawnRate = newSpawnRate;
             //waveText.SetActive(false);
@@ -83,8 +83,8 @@ public class EnemySpawnManager : MonoBehaviour {
         Debug.Log("In Set New Wave");
         yield return new WaitForSeconds(5);
 
-        waveTextMesh.text = "Wave " + waveNumber;
-        waveText.SetActive(true);
+        //waveTextMesh.text = "Wave " + waveNumber;
+        //waveText.SetActive(true);
         enemyProjectileScript.movementSpeed = enemyProjectileMovementSpeed;
     }
 
