@@ -11,8 +11,6 @@ public class EnemyController : MonoBehaviour
 
     public GameObject explosionParticleEffect;
 
-    public LifeKeeperController lifeKeeperController;
-
     public float projectileInvokeTime = 2f;
 
     private GameManager gameManager;
@@ -23,7 +21,6 @@ public class EnemyController : MonoBehaviour
         projectileInvokeTime = 2f;
 
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
-        lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         ShootProjectile();

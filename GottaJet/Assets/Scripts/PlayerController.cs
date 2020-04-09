@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
 
     private MeshRenderer childrenMeshRenderer;
 
-    private LifeKeeperController lifeKeeperController;
-
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -43,7 +41,6 @@ public class PlayerController : MonoBehaviour
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
         childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
 
         playerStartingPosition = transform.position;
@@ -158,9 +155,9 @@ public class PlayerController : MonoBehaviour
         meshRenderer.enabled = false;
         playerIsDead = true;
 
-        lifeKeeperController.lives -= 1;
+        gameManager.DecreaseLives();
 
-        if (lifeKeeperController.lives != 0) {
+        if (gameManager.lives != 0) {
             StartCoroutine(PlayerDeathRoutine(other));
         } else {
             HandleGameOverSequence();
@@ -182,7 +179,6 @@ public class PlayerController : MonoBehaviour
         var gameObjectTagIsEnemy = other.gameObject.CompareTag("EnemyAirplane");
 
         if (gameObjectTagIsEnemy) {
-            lifeKeeperController.lives -= 1 - 1;
             soundController.audioSource.PlayOneShot(soundController.explosionSound);
             Instantiate(explosionParticleEffect, gameObject.transform.position, gameObject.transform.rotation);
 
@@ -210,9 +206,9 @@ public class PlayerController : MonoBehaviour
         meshRenderer.enabled = false;
         playerIsDead = true;
 
-        lifeKeeperController.lives -= 1;
+        gameManager.DecreaseLives();
 
-        if (lifeKeeperController.lives != 0) {
+        if (gameManager.lives != 0) {
             StartCoroutine(PlayerDeathRoutine(other));
         } else {
             HandleGameOverSequence();

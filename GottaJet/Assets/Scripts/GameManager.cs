@@ -11,9 +11,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     private int highScore;
 
+    public TextMeshProUGUI livesText;
+    public int lives;
+
     // Start is called before the first frame update
     void Start() {
         score = 0;
+        lives = 3;
+
+        livesText.text = $"Lives: {lives}";
 
         GetHighScore();
     }
@@ -36,14 +42,23 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateHighScore() {
-
         if (score > highScore) {
-            highScore = score;
-
-            PlayerPrefs.SetInt("highScore", highScore);
-            PlayerPrefs.Save();
-
+            SetHighScore();
             GetHighScore();
         }
     }
+
+    private void SetHighScore() {
+        highScore = score;
+
+        PlayerPrefs.SetInt("highScore", highScore);
+        PlayerPrefs.Save();
+    }
+
+    public void DecreaseLives() {
+        lives -= 1;
+
+        livesText.text = $"Lives: {lives}";
+    }
+
 }
