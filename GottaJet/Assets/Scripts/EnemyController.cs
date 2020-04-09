@@ -5,24 +5,28 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject projectile;
-    private float movementSpeed = 10;
+    public float movementSpeed = 10;
 
     private SoundController soundController;
 
     public GameObject explosionParticleEffect;
 
-    public ScoreKeeperController scoreKeeperController;
-
     public LifeKeeperController lifeKeeperController;
+
+    public float projectileInvokeTime = 2f;
+
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
-        scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
-        lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
+        projectileInvokeTime = 2f;
 
-        InvokeRepeating("ShootProjectile", .5f, 2f);
+        soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
+        lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        ShootProjectile();
     }
 
     // Update is called once per frame
@@ -37,6 +41,8 @@ public class EnemyController : MonoBehaviour
     void ShootProjectile() {
         Instantiate(projectile, transform.position + transform.TransformDirection(new Vector3(0, .7f, 2)), projectile.transform.rotation);
         soundController.audioSource.PlayOneShot(soundController.projectileSound);
+
+        Invoke("ShootProjectile", projectileInvokeTime);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -45,7 +51,7 @@ public class EnemyController : MonoBehaviour
 
     private void HandlePlayerBulletCollision(Collider other) {
         var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
-        scoreKeeperController.score += 300;
+        gameManager.UpdateScore(300);
 
         if (gameObjectTagIsPlayerBullet) {
 

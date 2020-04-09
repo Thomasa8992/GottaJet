@@ -2,11 +2,10 @@
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    private ScoreKeeperController scoreKeeperController;
     // Start is called before the first frame update
     void Start()
     {
-        scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
+
     }
 
     // Update is called once per frame

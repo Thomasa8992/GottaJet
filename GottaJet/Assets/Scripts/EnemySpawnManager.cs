@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,46 +34,65 @@ public class EnemySpawnManager : MonoBehaviour
         enemyController.movementSpeed = 10;
 
         waveTextMesh = waveText.GetComponent<TextMesh>();
+        waveText.SetActive(true);
 
         SpawnRandomEnemy();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    //Todo: offset the time between the last enemy spawn and the next wave text 
 
+    IEnumerator BeginEnemySpawn() {
+
+        yield return new WaitForSeconds(5);
+
+        waveText.SetActive(false);
     }
 
     private void SpawnRandomEnemy() {
-        waveText.SetActive(false);
-
-        var spawnPosition = new Vector3(0, Random.Range(-spawnRangeY, spawnRangeY), spawnPositionZ);
+        var spawnPosition = new Vector3(0, UnityEngine.Random.Range(-spawnRangeY, spawnRangeY), spawnPositionZ);
 
         Instantiate(enemyPrefab, spawnPosition, enemyPrefab.transform.rotation);
         enemyCount++;
 
-        handleNewWave();
-
         Invoke("SpawnRandomEnemy", invokeTime);
-        newWaveHasStarted = false;
-        
-        if(invokeTime == 10) {
-            invokeTime = 3;
+        enemyCount++;
+
+        HandleNewWave();
+    }
+
+    private void HandleNewWave() {
+        if (enemyCount == 5) {
+            handleNewWave(2.5f, 18);
+        }
+
+        if (enemyCount == 10) {
+            handleNewWave(2, 20);
+        }
+
+        if (enemyCount == 20) {
+            handleNewWave(1.5f, 16);
         }
     }
 
-    private void handleNewWave( ) {
-        if (enemyCount == 25) {
-            waveNumber++;
+    private void handleNewWave(float newInvoketime, float enemyProjectileMovementSpeed) {
+        newWaveHasStarted = true;
+        waveNumber++;
 
-            waveTextMesh.text = "Wave " + waveNumber;
-            waveText.SetActive(true);
+        waveTextMesh.text = "Wave " + waveNumber;
+        waveText.SetActive(true);
 
-            newWaveHasStarted = true;
-            invokeTime = 10;
+        enemyProjectileScript.movementSpeed = enemyProjectileMovementSpeed;
 
-            //enemyController.movementSpeed += 2;
-            enemyProjectileScript.movementSpeed += 2;
-        }
+        StartCoroutine(StartNextPhase(newInvoketime));
+    }
+
+    private IEnumerator StartNextPhase(float newInvoketime) {
+        invokeTime = 10;
+
+        yield return new WaitForSeconds(8);
+
+        waveText.SetActive(false);
+        invokeTime = newInvoketime;
+        newWaveHasStarted = false;
     }
 }

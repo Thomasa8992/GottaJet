@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject explosionParticleEffect;
 
-    public ScoreKeeperController scoreKeeperController;
     private HighScoreController highScoreController;
     private Vector3 playerStartingPosition;
 
@@ -34,16 +33,18 @@ public class PlayerController : MonoBehaviour
 
     private LifeKeeperController lifeKeeperController;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         soundController = GameObject.Find("SoundObject").GetComponent<SoundController>();
-        scoreKeeperController = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperController>();
         highScoreController = GameObject.Find("HighScoreKeeper").GetComponent<HighScoreController>();
 
         meshCollider = gameObject.GetComponent<MeshCollider>();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
 
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         lifeKeeperController = GameObject.Find("LifeKeeper").GetComponent<LifeKeeperController>();
         childrenMeshRenderer = GameObject.Find("Propeller").GetComponent<MeshRenderer>();
 
@@ -59,11 +60,11 @@ public class PlayerController : MonoBehaviour
         CalculateHighScore();
     }
     private void CalculateHighScore() {
-        if (scoreKeeperController.score > highScoreController.highScore) {
-            highScoreController.highScore = scoreKeeperController.score;
-            PlayerPrefs.SetInt("highScore", highScoreController.highScore);
-            PlayerPrefs.Save();
-        }
+        //if (scoreKeeperController.score > highScoreController.highScore) {
+        //    highScoreController.highScore = scoreKeeperController.score;
+        //    PlayerPrefs.SetInt("highScore", highScoreController.highScore);
+        //    PlayerPrefs.Save();
+        //}
     }
 
 
@@ -144,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
         var gemPoints = 1200;
 
-        scoreKeeperController.score += gemPoints;
+        gameManager.UpdateScore(gemPoints);
 
         Destroy(other.gameObject);
     }
