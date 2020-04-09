@@ -15,8 +15,6 @@ public class EnemyController : MonoBehaviour
 
     private GameManager gameManager;
 
-    public int enemiesLeft;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,9 +48,9 @@ public class EnemyController : MonoBehaviour
 
     private void HandlePlayerBulletCollision(Collider other) {
         var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
-        gameManager.UpdateScore(300);
 
         if (gameObjectTagIsPlayerBullet) {
+            gameManager.UpdateScore(300);
 
             soundController.audioSource.PlayOneShot(soundController.explosionSound);
 
@@ -61,7 +59,7 @@ public class EnemyController : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
 
-            enemiesLeft--;
+            gameManager.enemiesLeft--;
         }
     }
 }

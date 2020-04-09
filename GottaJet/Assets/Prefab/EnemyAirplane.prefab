@@ -68,7 +68,7 @@ MeshRenderer:
   m_GameObject: {fileID: 3619440164190902212}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
@@ -113,8 +113,7 @@ MonoBehaviour:
   movementSpeed: 10
   explosionParticleEffect: {fileID: 4159002473853570603, guid: 936fe5394f8b5a24a962c64338ee73f4,
     type: 3}
-  scoreKeeperController: {fileID: 0}
-  lifeKeeperController: {fileID: 0}
+  projectileInvokeTime: 2
 --- !u!54 &54873185521934692
 Rigidbody:
   m_ObjectHideFlags: 0

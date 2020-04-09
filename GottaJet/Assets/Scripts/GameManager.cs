@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI livesText;
     public int lives;
 
+    public int enemiesLeft;
+
     // Start is called before the first frame update
     void Start() {
         score = 0;
