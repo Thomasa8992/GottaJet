@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnManager : MonoBehaviour
-{
+public class EnemySpawnManager : MonoBehaviour {
     public GameObject enemyPrefab;
     private EnemyController enemyController;
     public GameObject enemyProjectile;
@@ -17,15 +16,18 @@ public class EnemySpawnManager : MonoBehaviour
     private float spawnPositionZ = 14;
 
     private int enemyCount;
-    public bool newWaveHasStarted = false;
-
-    private float invokeTime = 3;
+    public bool newWaveHasStarted;
 
     public int waveNumber = 1;
 
+    public bool gameIsActive = false;
+    private float spawnRate;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        spawnRate = 3;
+        newWaveHasStarted = false;
+
         enemyProjectileScript = enemyProjectile.GetComponent<EnemyProjectile>();
         enemyProjectileScript.movementSpeed = 15;
 
@@ -33,66 +35,47 @@ public class EnemySpawnManager : MonoBehaviour
         enemyController = enemyPrefab.GetComponent<EnemyController>();
         enemyController.movementSpeed = 10;
 
+        enemyController.enemiesLeft = 5;
+
         waveTextMesh = waveText.GetComponent<TextMesh>();
         waveText.SetActive(true);
 
-        SpawnRandomEnemy();
+        StartCoroutine(SpawnRandomEnemy());
     }
 
-    //Todo: offset the time between the last enemy spawn and the next wave text 
+    IEnumerator SpawnRandomEnemy() {
+        Debug.Log(newWaveHasStarted);
+        while (!newWaveHasStarted) {
+            yield return new WaitForSeconds(spawnRate);
+            waveText.SetActive(false);
 
-    IEnumerator BeginEnemySpawn() {
+            var spawnPosition = new Vector3(0, UnityEngine.Random.Range(-spawnRangeY, spawnRangeY), spawnPositionZ);
+            Instantiate(enemyPrefab, spawnPosition, enemyPrefab.transform.rotation);
+            enemyCount++;
 
-        yield return new WaitForSeconds(5);
-
-        waveText.SetActive(false);
-    }
-
-    private void SpawnRandomEnemy() {
-        var spawnPosition = new Vector3(0, UnityEngine.Random.Range(-spawnRangeY, spawnRangeY), spawnPositionZ);
-
-        Instantiate(enemyPrefab, spawnPosition, enemyPrefab.transform.rotation);
-        enemyCount++;
-
-        Invoke("SpawnRandomEnemy", invokeTime);
-        enemyCount++;
-
-        HandleNewWave();
+            HandleNewWave();
+        }
     }
 
     private void HandleNewWave() {
-        if (enemyCount == 5) {
-            handleNewWave(2.5f, 18);
-        }
-
-        if (enemyCount == 10) {
-            handleNewWave(2, 20);
-        }
-
-        if (enemyCount == 20) {
-            handleNewWave(1.5f, 16);
+        if(enemyCount == 5 && enemyController.enemiesLeft == 0) {
+            spawnRate = 10;
+            StartCoroutine(SetNewWave(2, 17));
+            newWaveHasStarted = false;
         }
     }
 
-    private void handleNewWave(float newInvoketime, float enemyProjectileMovementSpeed) {
+    IEnumerator SetNewWave(float newSpawnRate, float enemyProjectileMovementSpeed) {
         newWaveHasStarted = true;
         waveNumber++;
-
         waveTextMesh.text = "Wave " + waveNumber;
         waveText.SetActive(true);
 
         enemyProjectileScript.movementSpeed = enemyProjectileMovementSpeed;
 
-        StartCoroutine(StartNextPhase(newInvoketime));
-    }
-
-    private IEnumerator StartNextPhase(float newInvoketime) {
-        invokeTime = 10;
-
         yield return new WaitForSeconds(8);
 
-        waveText.SetActive(false);
-        invokeTime = newInvoketime;
-        newWaveHasStarted = false;
+        spawnRate = newSpawnRate;
+
     }
 }

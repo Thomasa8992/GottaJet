@@ -18,10 +18,13 @@ public class GameManager : MonoBehaviour
     void Start() {
         score = 0;
         lives = 3;
-
-        livesText.text = $"Lives: {lives}";
+        GetLives();
 
         GetHighScore();
+    }
+
+    private void GetLives() {
+        livesText.text = $"Lives: {lives}";
     }
 
     // Update is called once per frame
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
     public void DecreaseLives() {
         lives -= 1;
 
-        livesText.text = $"Lives: {lives}";
+        GetLives();
     }
 
 }
