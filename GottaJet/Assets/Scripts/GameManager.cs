@@ -23,13 +23,17 @@ public class GameManager : MonoBehaviour
 
     public Button restartButton;
 
+    private int bonus;
+    private int bonusInterval = 25000;
+
     public 
     // Start is called before the first frame update
     void Start() {
         score = 0;
         lives = 3;
-        GetLives();
+        bonus = bonusInterval;
 
+        GetLives();
         GetHighScore();
     }
 
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore(int addToScore) {
         score += addToScore;
+
+        IncreaseLives();
 
         scoreText.text = $"Score: {score}";
     }
@@ -88,4 +94,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    private void IncreaseLives() {
+        if(score >= bonus) {
+            lives++;
+            bonus += bonusInterval;
+        }
+
+        GetLives();
+    }
 }
