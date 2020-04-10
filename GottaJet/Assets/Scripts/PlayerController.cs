@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         HandlePlayerMovement();
         HandlePlayerBoundaries();
         ShootProjectile();
-        //gameManager.UpdateHighScore();
     }
 
     private void ShootProjectile() {
@@ -68,6 +67,7 @@ public class PlayerController : MonoBehaviour
                 nextFire = Time.time + fireRate;
 
                 Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
+
                 soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);
             }
         }
