@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public bool gameIsOver;
 
+    public Button restartButton;
+
+    public 
     // Start is called before the first frame update
     void Start() {
         score = 0;
@@ -73,8 +78,14 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         if(lives == 0) {
             gameIsOver = true;
+
             gameOverText.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
         }
+    }
+
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
