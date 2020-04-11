@@ -127,17 +127,20 @@ public class PlayerController : MonoBehaviour
     private void HandleFireBoosterCollision(Collider other) {
         Destroy(other.gameObject);
 
-        StartCoroutine(HandleFireRateChange());
+        if (fireRateIsIncreased) {
+            StopCoroutine("ChangeFireRateAvailability");
+        }
+
+        StartCoroutine("ChangeFireRateAvailability");
     }
 
-    IEnumerator HandleFireRateChange() {
+    IEnumerator ChangeFireRateAvailability() {
         fireRateIsIncreased = true;
+
         //Todo:figure out how to cancel a coroutine or another way of handling this effect
         yield return new WaitForSeconds(10);
 
         fireRateIsIncreased = false;
-
-
     }
 
     private void HandlePlayerFireBoostParticleEffect() {
@@ -178,6 +181,11 @@ public class PlayerController : MonoBehaviour
         playerIsDead = true;
         playerSpeedBoostParticleEffect.gameObject.SetActive(false);
         playerMovementSpeed = 10;
+
+        if (fireRateIsIncreased) {
+            StopCoroutine("ChangeFireRateAvailability");
+        }
+
         fireRateIsIncreased = false;
 
         gameManager.DecreaseLives();
@@ -231,6 +239,11 @@ public class PlayerController : MonoBehaviour
 
         playerSpeedBoostParticleEffect.gameObject.SetActive(false);
         playerMovementSpeed = 10;
+
+
+        if (fireRateIsIncreased) {
+            StopCoroutine("ChangeFireRateAvailability");
+        }
 
         fireRateIsIncreased = false;
 
