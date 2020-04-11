@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject explosionParticleEffect;
 
+    public GameObject gemParticleEffect;
+
     private Vector3 playerStartingPosition;
 
     private MeshCollider meshCollider;
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private MeshRenderer childrenMeshRenderer;
 
     private GameManager gameManager;
+
+    public ParticleSystem playerParticleEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -106,10 +110,12 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator HandleIncreaedPlayerMovement() {
+        playerParticleEffect.gameObject.SetActive(true);
         playerMovementSpeed = 18;
 
         yield return new WaitForSeconds(10);
 
+        playerParticleEffect.gameObject.SetActive(false);
         playerMovementSpeed = 10;
     }
 
@@ -132,7 +138,7 @@ public class PlayerController : MonoBehaviour
         var gemPoints = 1200;
 
         gameManager.UpdateScore(gemPoints);
-
+        Instantiate(gemParticleEffect, other.transform.position, gemParticleEffect.transform.rotation);
         Destroy(other.gameObject);
     }
 
@@ -154,6 +160,8 @@ public class PlayerController : MonoBehaviour
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
         playerIsDead = true;
+        playerParticleEffect.gameObject.SetActive(false);
+        playerMovementSpeed = 10;
 
         gameManager.DecreaseLives();
 
@@ -203,6 +211,8 @@ public class PlayerController : MonoBehaviour
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
         playerIsDead = true;
+        playerParticleEffect.gameObject.SetActive(false);
+        playerMovementSpeed = 10;
 
         gameManager.DecreaseLives();
 
