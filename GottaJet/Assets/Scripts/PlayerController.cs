@@ -34,7 +34,10 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager;
 
-    public ParticleSystem playerParticleEffect;
+    public ParticleSystem playerSpeedBoostParticleEffect;
+
+    public ParticleSystem playerFireBoostParticleEffect;
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,8 @@ public class PlayerController : MonoBehaviour
         HandlePlayerMovement();
         HandlePlayerBoundaries();
         ShootProjectile();
+        HandlePlayerFireBoostParticleEffect();
+        Debug.Log(fireRateIsIncreased);
     }
 
     private void ShootProjectile() {
@@ -110,26 +115,37 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator HandleIncreaedPlayerMovement() {
-        playerParticleEffect.gameObject.SetActive(true);
+        playerSpeedBoostParticleEffect.gameObject.SetActive(true);
         playerMovementSpeed = 18;
 
         yield return new WaitForSeconds(10);
 
-        playerParticleEffect.gameObject.SetActive(false);
+        playerSpeedBoostParticleEffect.gameObject.SetActive(false);
         playerMovementSpeed = 10;
     }
 
     private void HandleFireBoosterCollision(Collider other) {
         Destroy(other.gameObject);
+
         StartCoroutine(HandleFireRateChange());
     }
 
     IEnumerator HandleFireRateChange() {
         fireRateIsIncreased = true;
-
+        //Todo:figure out how to cancel a coroutine or another way of handling this effect
         yield return new WaitForSeconds(10);
 
         fireRateIsIncreased = false;
+
+
+    }
+
+    private void HandlePlayerFireBoostParticleEffect() {
+        if(fireRateIsIncreased) {
+            playerFireBoostParticleEffect.gameObject.SetActive(true);
+        } else {
+            playerFireBoostParticleEffect.gameObject.SetActive(false);
+        }
     }
 
     private void HandleGemCollision(Collider other) {
@@ -160,8 +176,9 @@ public class PlayerController : MonoBehaviour
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
         playerIsDead = true;
-        playerParticleEffect.gameObject.SetActive(false);
+        playerSpeedBoostParticleEffect.gameObject.SetActive(false);
         playerMovementSpeed = 10;
+        fireRateIsIncreased = false;
 
         gameManager.DecreaseLives();
 
@@ -211,8 +228,11 @@ public class PlayerController : MonoBehaviour
         meshCollider.enabled = false;
         meshRenderer.enabled = false;
         playerIsDead = true;
-        playerParticleEffect.gameObject.SetActive(false);
+
+        playerSpeedBoostParticleEffect.gameObject.SetActive(false);
         playerMovementSpeed = 10;
+
+        fireRateIsIncreased = false;
 
         gameManager.DecreaseLives();
 
