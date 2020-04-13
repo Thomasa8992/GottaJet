@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,22 +20,49 @@ public class GameManager : MonoBehaviour
     public int enemiesLeft;
 
     public TextMeshProUGUI gameOverText;
-    public bool gameIsOver;
+    public bool gameIsActive = false;
+
+    public int easyMode = 1;
+    public int mediumMode = 2;
+    public int hardMode = 3;
 
     public Button restartButton;
 
     private int bonus;
     private int bonusInterval = 25000;
 
-    public 
+    public GameObject titleScreen;
+
+    public void StartGame(int difficultyLevel) {
+        gameIsActive = true;
+
+        if (difficultyLevel == easyMode) {
+
+        }
+
+        if (difficultyLevel == mediumMode) {
+
+        }
+
+        if (difficultyLevel == hardMode) {
+
+        }
+
+
+        titleScreen.SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start() {
-        score = 0;
         lives = 3;
+
+        score = 0;
+
         bonus = bonusInterval;
 
-        GetLives();
         GetHighScore();
+
+        GetLives();
     }
 
     private void GetLives() {
@@ -83,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() {
         if(lives == 0) {
-            gameIsOver = true;
+            gameIsActive = false;
 
             gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);

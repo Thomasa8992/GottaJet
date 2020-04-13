@@ -52,7 +52,9 @@ public class EnemySpawnManager : MonoBehaviour {
     }
 
     IEnumerator SpawnRandomEnemy() {
-        while (!gameManager.gameIsOver) {
+
+        Debug.Log(gameManager.gameIsActive);
+        while (gameManager.gameIsActive) {
             yield return new WaitForSeconds(spawnRate);
             spawnRate = newSpawnRate;
             //waveText.SetActive(false);

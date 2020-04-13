@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class EnemyController : MonoBehaviour
     public float projectileInvokeTime = 2f;
 
     private GameManager gameManager;
+
+    public TextMesh addedPointsText;
 
     // Start is called before the first frame update
     void Start()
@@ -50,11 +53,19 @@ public class EnemyController : MonoBehaviour
         var gameObjectTagIsPlayerBullet = other.gameObject.CompareTag("PlayerBullet");
 
         if (gameObjectTagIsPlayerBullet) {
-            gameManager.UpdateScore(300);
+            var pointsForDestroyingEnemy = 300;
+
+            gameManager.UpdateScore(pointsForDestroyingEnemy);
 
             soundController.audioSource.PlayOneShot(soundController.explosionSound);
 
             Instantiate(explosionParticleEffect, gameObject.transform.position, gameObject.transform.rotation);
+
+            addedPointsText.text = $"+ {pointsForDestroyingEnemy}";
+
+            Instantiate(addedPointsText, gameObject.transform.position, addedPointsText.transform.rotation);
+
+            addedPointsText.color = new Color(addedPointsText.color.r, addedPointsText.color.g, addedPointsText.color.b, 0);
 
             Destroy(other.gameObject);
             Destroy(gameObject);

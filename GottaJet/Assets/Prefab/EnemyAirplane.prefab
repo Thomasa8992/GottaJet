@@ -114,6 +114,8 @@ MonoBehaviour:
   explosionParticleEffect: {fileID: 4159002473853570603, guid: 936fe5394f8b5a24a962c64338ee73f4,
     type: 3}
   projectileInvokeTime: 2
+  addedPointsText: {fileID: 2547579273555305710, guid: 6ae0dcb03dcbdd64d9002d4c866d49d0,
+    type: 3}
 --- !u!54 &54873185521934692
 Rigidbody:
   m_ObjectHideFlags: 0

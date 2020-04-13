@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem playerSpeedBoostParticleEffect;
 
     public ParticleSystem playerFireBoostParticleEffect;
+    private bool playerMovementIsIncreased = false;
 
 
     // Start is called before the first frame update
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
         HandlePlayerBoundaries();
         ShootProjectile();
         HandlePlayerFireBoostParticleEffect();
-        Debug.Log(fireRateIsIncreased);
+        ChangePlayerMovementSpeed();
     }
 
     private void ShootProjectile() {
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
                 Instantiate(projectile, projectilePositionRelativeToPlayerPosition, projectile.transform.rotation);
 
                 soundController.audioSource.PlayOneShot(soundController.projectileSound, 1);
-            }
+            } 
         }
     }
 
@@ -111,17 +112,29 @@ public class PlayerController : MonoBehaviour
     private void HandleSpeedBoostCollision(Collider other) {
         Destroy(other.gameObject);
 
-        StartCoroutine(HandleIncreaedPlayerMovement());
+        if(playerMovementIsIncreased) {
+            StopCoroutine("HandleIncreaedPlayerMovement");
+        } 
+
+        StartCoroutine("HandleIncreaedPlayerMovement");
     }
 
     IEnumerator HandleIncreaedPlayerMovement() {
-        playerSpeedBoostParticleEffect.gameObject.SetActive(true);
+        playerMovementIsIncreased = true;
         playerMovementSpeed = 18;
 
         yield return new WaitForSeconds(10);
 
-        playerSpeedBoostParticleEffect.gameObject.SetActive(false);
+        playerMovementIsIncreased = false;
         playerMovementSpeed = 10;
+    }
+
+    private void ChangePlayerMovementSpeed() {
+        if(playerMovementIsIncreased) {
+            playerSpeedBoostParticleEffect.gameObject.SetActive(true);
+        } else {
+            playerSpeedBoostParticleEffect.gameObject.SetActive(false);
+        }
     }
 
     private void HandleFireBoosterCollision(Collider other) {
@@ -188,6 +201,12 @@ public class PlayerController : MonoBehaviour
 
         fireRateIsIncreased = false;
 
+        if (playerMovementIsIncreased) {
+            StopCoroutine("HandleIncreaedPlayerMovement");
+        }
+
+        playerMovementIsIncreased = false;
+
         gameManager.DecreaseLives();
 
         if (gameManager.lives != 0) {
@@ -246,6 +265,12 @@ public class PlayerController : MonoBehaviour
         }
 
         fireRateIsIncreased = false;
+
+        if (playerMovementIsIncreased) {
+            StopCoroutine("HandleIncreaedPlayerMovement");
+        }
+
+        playerMovementIsIncreased = false;
 
         gameManager.DecreaseLives();
 

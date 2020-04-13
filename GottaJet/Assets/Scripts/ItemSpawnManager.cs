@@ -25,7 +25,7 @@ public class ItemSpawnManager : MonoBehaviour
     }
 
     IEnumerator SpawnRandomItem() {
-        while(!gameManager.gameIsOver) {
+        while(gameManager.gameIsActive) {
             yield return new WaitForSeconds(10);
 
             var spawnPosition = new Vector3(0, spawnPositionY, Random.Range(-spawnRangeZ, spawnRangeZ));

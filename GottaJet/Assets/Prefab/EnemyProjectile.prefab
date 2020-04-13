@@ -284,6 +284,11 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxGradient.key1.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2478549635105912040, guid: ec46c8c4a3cbc429382ee48bd9169b45,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 9209604266781961644, guid: ec46c8c4a3cbc429382ee48bd9169b45,
         type: 3}
       propertyPath: m_LocalPosition.x
